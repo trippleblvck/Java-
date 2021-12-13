@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="1059.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaСode.controllers.worker.WorkerMainController">
+   <children>
+      <Button fx:id="exitButton" layoutX="960.0" layoutY="5.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="88.0" text="Выход" />
+      <RadioButton fx:id="firstType" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#selectIndividuals" selected="true" text="Физ. лицо">
+         <toggleGroup>
+            <ToggleGroup fx:id="clientType" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="secondType" layoutX="104.0" layoutY="8.0" mnemonicParsing="false" onAction="#unselectIndividuals" text="Юр. лицо" toggleGroup="$clientType" />
+      <TableView fx:id="clientsTable" layoutX="14.0" layoutY="38.0" onMouseClicked="#selectClient" prefHeight="130.0" prefWidth="869.0">
+         <columns>
+            <TableColumn fx:id="clientName" prefWidth="269.0" text="ФИО" />
+            <TableColumn fx:id="clientPassport" prefWidth="182.0" text="Паспорт" />
+            <TableColumn fx:id="clientCommunication" prefWidth="161.0" text="Способ связи" />
+            <TableColumn fx:id="clientAddress" prefWidth="256.0" text="Адрес" />
+         </columns>
+      </TableView>
+      <TitledPane animated="false" collapsible="false" layoutX="417.0" layoutY="320.0" prefHeight="279.0" prefWidth="628.0" text="Расчет ЖЦ">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ListView fx:id="unselectBodies" layoutX="14.0" layoutY="39.0" prefHeight="200.0" prefWidth="200.0" />
+                  <ListView fx:id="selectBodies" layoutX="288.0" layoutY="39.0" prefHeight="200.0" prefWidth="200.0" />
+                  <Text layoutX="82.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Гос. органы" textAlignment="CENTER" />
+                  <Text layoutX="288.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Гос. органы, которые должны провести проверку" textAlignment="CENTER" wrappingWidth="199.751953125" />
+                  <Button layoutX="234.0" layoutY="86.0" mnemonicParsing="false" onAction="#toRight" text="-&gt;" />
+                  <Button layoutX="234.0" layoutY="127.0" mnemonicParsing="false" onAction="#toLeft" text="&lt;-" />
+                  <Button layoutX="509.0" layoutY="214.0" mnemonicParsing="false" onAction="#calculate" prefHeight="25.0" prefWidth="103.0" text="Рассчитать" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+      <TableView fx:id="clientsTable1" layoutX="14.0" layoutY="38.0" prefHeight="130.0" prefWidth="869.0" onMouseClicked="#selectClient" visible="false">
+         <columns>
+            <TableColumn fx:id="clientName1" prefWidth="269.0" text="Наименование организации" />
+            <TableColumn fx:id="clientPassport1" prefWidth="182.0" text="УНП" />
+            <TableColumn fx:id="clientCommunication1" prefWidth="161.0" text="Способ связи" />
+            <TableColumn fx:id="clientAddress1" prefWidth="256.0" text="Адрес" />
+         </columns>
+      </TableView>
+      <TableView fx:id="documentsTable" layoutX="13.0" layoutY="181.0" onMouseClicked="#selectDocument" prefHeight="130.0" prefWidth="1033.0">
+         <columns>
+            <TableColumn fx:id="name" prefWidth="237.0" text="Наименование документа" />
+            <TableColumn fx:id="template" prefWidth="142.0" text="Шаблон" />
+            <TableColumn fx:id="compiler" prefWidth="145.0" text="Составитель" />
+            <TableColumn fx:id="count" prefWidth="119.0" text="Экземпляров" />
+            <TableColumn fx:id="amount" prefWidth="169.0" text="Размер платы" />
+            <TableColumn fx:id="term" prefWidth="220.0" text="Время обработки (дней)" />
+         </columns>
+      </TableView>
+      <TitledPane animated="false" collapsible="false" layoutX="13.0" layoutY="320.0" prefHeight="313.0" prefWidth="389.0" text="Редактирование">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextArea fx:id="nameEdit" layoutX="14.0" layoutY="14.0" prefHeight="59.0" prefWidth="363.0" promptText="Наименование документа" />
+                  <ComboBox fx:id="templateEdit" layoutX="14.0" layoutY="87.0" prefHeight="25.0" prefWidth="363.0" promptText="Шаблон" />
+                  <TextField fx:id="countEdit" layoutX="14.0" layoutY="166.0" prefHeight="25.0" prefWidth="361.0" promptText="Экзмепляров" />
+                  <Button layoutX="15.0" layoutY="248.0" mnemonicParsing="false" onAction="#editDocument" prefHeight="25.0" prefWidth="152.0" text="Сохранить" />
+                  <Button layoutX="222.0" layoutY="248.0" mnemonicParsing="false" onAction="#clearEdit" prefHeight="25.0" prefWidth="152.0" text="Очистить" />
+                  <TextField fx:id="compilerEdit" layoutX="15.0" layoutY="127.0" prefHeight="25.0" prefWidth="361.0" promptText="Составитель" />
+                  <TextField fx:id="amountEdit" layoutX="15.0" layoutY="207.0" prefHeight="25.0" prefWidth="361.0" promptText="Размер платы" />
+               </children>
+            </AnchorPane>
+         </content>
+      </TitledPane>
+   </children>
+</AnchorPane>

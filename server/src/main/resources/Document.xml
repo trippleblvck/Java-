@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE hibernate-mapping PUBLIC
+
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="db.entity.Document" table="documents">
+
+        <meta attribute="class-description">This class
+            contains developer's details.
+        </meta>
+
+        <id name="id" type="int" column="id">
+            <generator class="native"/>
+        </id>
+
+        <property name="name" column="document_name" type="string"/>
+        <property name="template" column="template" type="int"/>
+        <property name="compiler" column="compiler" type="string"/>
+        <property name="count" column="count" type="int"/>
+        <property name="price" column="transaction_price" type="float"/>
+        <property name="term" column="term" type="float"/>
+        <property name="client" column="client_id" type="int"/>
+    </class>
+
+</hibernate-mapping>

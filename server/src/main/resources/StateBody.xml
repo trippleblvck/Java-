@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE hibernate-mapping PUBLIC
+
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="db.entity.StateBody" table="state_body">
+
+        <meta attribute="class-description">This class
+            contains developer's details.
+        </meta>
+
+        <id name="id" type="int" column="id">
+            <generator class="native"/>
+        </id>
+
+        <property name="name" column="name" type="string"/>
+        <property name="term" column="term" type="float"/>
+        <property name="communication" column="communication" type="string"/>
+    </class>
+
+</hibernate-mapping>

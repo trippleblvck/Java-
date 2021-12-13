@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1101.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaСode.controllers.admin.AdminWindowController">
+   <children>
+      <TabPane layoutX="12.0" layoutY="34.0" prefHeight="574.0" prefWidth="1078.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Клиенты">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <RadioButton layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#selectFirstType" selected="true" text="Физ. лицо">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="clientType" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton layoutX="104.0" layoutY="14.0" mnemonicParsing="false" onAction="#selectSecondType" text="Юр. лицо" toggleGroup="$clientType" />
+                        <TableView fx:id="legalEntitiesTable" layoutX="14.0" layoutY="44.0" onMouseClicked="#selectClient" prefHeight="174.0" prefWidth="869.0" visible="false">
+                           <columns>
+                              <TableColumn fx:id="legalEntitiesName" prefWidth="269.0" text="Наименование организации" />
+                              <TableColumn fx:id="legalEntitiesPassport" prefWidth="182.0" text="УНП" />
+                              <TableColumn fx:id="legalEntitiesCommunication" prefWidth="161.0" text="Способ связи" />
+                              <TableColumn fx:id="legalEntitiesAddress" prefWidth="256.0" text="Адрес" />
+                           </columns>
+                        </TableView>
+                        <TabPane layoutX="14.0" layoutY="240.0" prefHeight="298.0" prefWidth="1058.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Данные авторизации">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField fx:id="clientLogin" layoutX="14.0" layoutY="26.0" prefHeight="25.0" prefWidth="306.0" />
+                                          <TextField fx:id="clientPassword" layoutX="14.0" layoutY="77.0" prefHeight="25.0" prefWidth="306.0" />
+                                          <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Логин:" />
+                                          <Text layoutX="14.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Пароль:" />
+                                          <TextField fx:id="clientStatus" layoutX="14.0" layoutY="133.0" prefHeight="25.0" prefWidth="306.0" />
+                                          <Text layoutX="14.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Статус:" />
+                                          <Button layoutX="14.0" layoutY="173.0" mnemonicParsing="false" onAction="#lockUnlockClient" prefHeight="25.0" prefWidth="306.0" text="Заблокировать/разблокировать" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab text="Информация о документах клиента">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="526.0">
+                                       <children>
+                                          <TableView fx:id="documentsTable" layoutX="13.0" layoutY="13.0" prefHeight="244.0" prefWidth="1033.0">
+                                             <columns>
+                                                <TableColumn fx:id="name" prefWidth="237.0" text="Наименование документа" />
+                                                <TableColumn fx:id="template" prefWidth="142.0" text="Шаблон" />
+                                                <TableColumn fx:id="compiler" prefWidth="145.0" text="Составитель" />
+                                                <TableColumn fx:id="count" prefWidth="119.0" text="Экземпляров" />
+                                                <TableColumn fx:id="amount" prefWidth="169.0" text="Размер платы" />
+                                                <TableColumn fx:id="term" prefWidth="220.0" text="Время обработки (дней)" />
+                                             </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                        <Button layoutX="896.0" layoutY="44.0" mnemonicParsing="false" onAction="#addNewClient" prefHeight="25.0" prefWidth="172.0" text="Добавить клиента" />
+                        <Button layoutX="896.0" layoutY="80.0" mnemonicParsing="false" onAction="#editClient" prefHeight="25.0" prefWidth="172.0" text="Редактировать клиента" />
+                        <Button layoutX="896.0" layoutY="118.0" mnemonicParsing="false" onAction="#deleteClient" prefHeight="25.0" prefWidth="172.0" text="Удалить клиента" textFill="RED" />
+                        <TableView fx:id="individualsTable" layoutX="14.0" layoutY="44.0" onMouseClicked="#selectClient" prefHeight="174.0" prefWidth="869.0">
+                          <columns>
+                            <TableColumn fx:id="individualName" prefWidth="269.0" text="ФИО" />
+                            <TableColumn fx:id="individualsPassport" prefWidth="182.0" text="Паспорт" />
+                              <TableColumn fx:id="individualsCommunication" prefWidth="161.0" text="Способ связи" />
+                              <TableColumn fx:id="individualsAddress" prefWidth="256.0" text="Адрес" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Работники">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="workersTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#selectWorker" prefHeight="245.0" prefWidth="1054.0">
+                           <columns>
+                              <TableColumn fx:id="workerName" prefWidth="269.0" text="ФИО" />
+                              <TableColumn fx:id="workerPassport" prefWidth="182.0" text="Паспорт" />
+                              <TableColumn fx:id="workerCommunication" prefWidth="161.0" text="Способ связи" />
+                              <TableColumn fx:id="workerAddress" prefWidth="195.0" text="Адрес" />
+                              <TableColumn fx:id="workerLogin" prefWidth="122.0" text="Логин" />
+                              <TableColumn fx:id="workerPassword" prefWidth="124.0" text="Пароль" />
+                           </columns>
+                        </TableView>
+                        <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="273.0" prefHeight="206.0" prefWidth="463.0" text="Добавление">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="workerNameAdd" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="193.0" promptText="ФИО" />
+                                    <TextField fx:id="workerPassportAdd" layoutX="14.0" layoutY="53.0" prefHeight="25.0" prefWidth="193.0" promptText="Паспорт" />
+                                    <TextField fx:id="workerTelephoneAdd" layoutX="14.0" layoutY="94.0" prefHeight="25.0" prefWidth="193.0" promptText="Адрес" />
+                                    <TextField fx:id="workerEmailAdd" layoutX="14.0" layoutY="133.0" prefHeight="25.0" prefWidth="191.0" promptText="Связь" />
+                                    <TextField fx:id="workerLoginAdd" layoutX="245.0" layoutY="14.0" prefHeight="25.0" prefWidth="193.0" promptText="Лоигн" />
+                                    <TextField fx:id="workerPasswordAdd" layoutX="246.0" layoutY="53.0" prefHeight="25.0" prefWidth="191.0" promptText="Пароль" />
+                                    <Button layoutX="245.0" layoutY="94.0" mnemonicParsing="false" onAction="#addNewWorker" prefHeight="25.0" prefWidth="192.0" text="Сохранить" />
+                                    <Button layoutX="245.0" layoutY="133.0" mnemonicParsing="false" onAction="#clearWorkerAdd" prefHeight="25.0" prefWidth="192.0" text="Очистить" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </TitledPane>
+                        <TitledPane animated="false" collapsible="false" layoutX="496.0" layoutY="273.0" prefHeight="206.0" prefWidth="463.0" text="Редактирование">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="workerNameEdit" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="193.0" promptText="ФИО" />
+                                    <TextField fx:id="workerPassportEdit" layoutX="14.0" layoutY="53.0" prefHeight="25.0" prefWidth="193.0" promptText="Паспорт" />
+                                    <TextField fx:id="workerTelephoneEdit" layoutX="14.0" layoutY="94.0" prefHeight="25.0" prefWidth="193.0" promptText="Адрес" />
+                                    <TextField fx:id="workerEmailEdit" layoutX="14.0" layoutY="133.0" prefHeight="25.0" prefWidth="191.0" promptText="Связь" />
+                                    <TextField fx:id="workerLoginEdit" layoutX="245.0" layoutY="14.0" prefHeight="25.0" prefWidth="193.0" promptText="Лоигн" />
+                                    <TextField fx:id="workerPasswordEdit" layoutX="246.0" layoutY="53.0" prefHeight="25.0" prefWidth="191.0" promptText="Пароль" />
+                                    <Button layoutX="245.0" layoutY="94.0" mnemonicParsing="false" onAction="#editWorker" prefHeight="25.0" prefWidth="192.0" text="Сохранить" />
+                                    <Button layoutX="245.0" layoutY="133.0" mnemonicParsing="false" onAction="#clearWorkerEdit" prefHeight="25.0" prefWidth="192.0" text="Очистить" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <Button layoutX="496.0" layoutY="494.0" mnemonicParsing="false" onAction="#deleteWorker" prefHeight="25.0" prefWidth="464.0" text="Удалить" textFill="RED" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+          <Tab text="Шаблоны документов">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="categoriesTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#selectTemplate" prefHeight="200.0" prefWidth="592.0">
+                          <columns>
+                            <TableColumn fx:id="categoriesName" prefWidth="296.0" text="Наименование шаблона" />
+                            <TableColumn fx:id="categoriesAmount" prefWidth="295.0" text="Время обработки (дней)" />
+                          </columns>
+                        </TableView>
+                        <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="230.0" prefHeight="168.0" prefWidth="279.0" text="Добавление шаблона">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="277.0">
+                                 <children>
+                                    <TextField fx:id="categoryNameAdd" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="252.0" promptText="Наименование" />
+                                    <TextField fx:id="categoryAmountAdd" layoutX="14.0" layoutY="55.0" prefHeight="25.0" prefWidth="250.0" promptText="Время обработки (дней)" />
+                                    <Button layoutX="14.0" layoutY="99.0" mnemonicParsing="false" onAction="#addNewTemplate" prefHeight="25.0" prefWidth="115.0" text="Сохранить" />
+                                    <Button layoutX="148.0" layoutY="99.0" mnemonicParsing="false" onAction="#clearTemplateAdd" prefHeight="25.0" prefWidth="115.0" text="Очистить" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </TitledPane>
+                        <TitledPane animated="false" collapsible="false" layoutX="327.0" layoutY="230.0" prefHeight="168.0" prefWidth="279.0" text="Редактирование шаблона">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="277.0">
+                                 <children>
+                                    <TextField fx:id="categoryNameEdit" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="252.0" promptText="Наименование" />
+                                    <TextField fx:id="categoryAmountEdit" layoutX="14.0" layoutY="55.0" prefHeight="25.0" prefWidth="250.0" promptText="Время обработки (дней)" />
+                                    <Button layoutX="14.0" layoutY="99.0" mnemonicParsing="false" onAction="#editTemplate" prefHeight="25.0" prefWidth="115.0" text="Сохранить" />
+                                    <Button layoutX="148.0" layoutY="99.0" mnemonicParsing="false" onAction="#clearTemplateEdit" prefHeight="25.0" prefWidth="115.0" text="Очистить" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <BarChart fx:id="categoryGraph" animated="false" layoutX="608.0" layoutY="14.0" prefHeight="409.0" prefWidth="461.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                        <Button layoutX="327.0" layoutY="417.0" mnemonicParsing="false" onAction="#deleteTemplate" prefHeight="25.0" prefWidth="279.0" text="Удалить" textFill="RED" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Гос. органы">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="stateBodiesTable" layoutX="14.0" layoutY="14.0" onMouseClicked="#selectStateBody" prefHeight="200.0" prefWidth="704.0">
+                          <columns>
+                            <TableColumn fx:id="stateBodyName" prefWidth="297.0" text="Наименование органа" />
+                            <TableColumn fx:id="stateBodyAmount" prefWidth="159.0" text="Время обработки (дней)" />
+                              <TableColumn fx:id="stateBodyCommunication" prefWidth="247.0" text="Способ связи" />
+                          </columns>
+                        </TableView>
+                        <TitledPane animated="false" collapsible="false" layoutX="14.0" layoutY="230.0" prefHeight="232.0" prefWidth="319.0" text="Добавление органа">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="317.0">
+                                 <children>
+                                    <TextField fx:id="stateBodyNameAdd" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="287.0" promptText="Наименование" />
+                                    <TextField fx:id="stateBodyTermAdd" layoutX="15.0" layoutY="51.0" prefHeight="25.0" prefWidth="287.0" promptText="Время обработки (дней)" />
+                                    <TextField fx:id="stateBodyCommunicationAdd" layoutX="15.0" layoutY="88.0" prefHeight="25.0" prefWidth="287.0" promptText="Телефон для связи" />
+                                    <Button layoutX="14.0" layoutY="163.0" mnemonicParsing="false" onAction="#addNewStateBody" prefHeight="25.0" prefWidth="122.0" text="Сохранить" />
+                                    <Button layoutX="167.0" layoutY="163.0" mnemonicParsing="false" onAction="#clearStateBodyAdd" prefHeight="25.0" prefWidth="134.0" text="Очистить" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </TitledPane>
+                        <TitledPane animated="false" collapsible="false" layoutX="399.0" layoutY="230.0" prefHeight="230.0" prefWidth="319.0" text="Редактирование органа">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField fx:id="stateBodyNameEdit" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="287.0" promptText="Наименование" />
+                                    <TextField fx:id="stateBodyTermEdit" layoutX="15.0" layoutY="51.0" prefHeight="25.0" prefWidth="287.0" promptText="Время обработки (дней)" />
+                                    <TextField fx:id="stateBodyCommunicationEdit" layoutX="15.0" layoutY="88.0" prefHeight="25.0" prefWidth="287.0" promptText="Телефон для связи" />
+                                    <Button layoutX="14.0" layoutY="163.0" mnemonicParsing="false" onAction="#editStateBody" prefHeight="25.0" prefWidth="122.0" text="Сохранить" />
+                                    <Button layoutX="167.0" layoutY="163.0" mnemonicParsing="false" onAction="#clearStateBodyEdit" prefHeight="25.0" prefWidth="134.0" text="Очистить" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                        <Button layoutX="400.0" layoutY="479.0" mnemonicParsing="false" onAction="#deleteStateBody" prefHeight="25.0" prefWidth="318.0" text="Удалить" textFill="RED" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Button fx:id="exitButton" layoutX="1038.0" layoutY="5.0" mnemonicParsing="false" onAction="#exit" text="Выход" />
+   </children>
+</AnchorPane>
